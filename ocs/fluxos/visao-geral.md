@@ -22,11 +22,12 @@ flowchart TB
         
         backend2["Backend 2<br/>Java<br/>Orçamentos, Pagamentos<br/>e Alertas/Lembretes"]
         
-        banco[("Banco de Dados<br/>PostgreSQL<br/>Repositório Relacional")]
+        banco[("Banco de Dados<br/>PostgreSQL<br/>Repositório Relacional Unificado")]
     end
 
     prestador -->|Usa via navegador| frontend
     frontend -->|Requisições HTTP<br/>Clientes, Serviços, Agenda| backend1
     frontend -->|Requisições HTTP<br/>Orçamentos e Pagamentos| backend2
     backend1 -->|Persistência SQL<br/>Leitura e Gravação| banco
+    backend2 -->|Persistência SQL<br/>Orçamentos e Pagamentos| banco
     backend2 -.->|Notificações e Lembretes<br/>Avisos de pendências| frontend
