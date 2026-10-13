@@ -3,7 +3,7 @@
 ## Tabela de Módulos
 | Módulo | O que faz | Tecnologia | Repositório | Responsável |
 | :--- | :--- | :--- | :--- | :--- |
-| **Frontend** | Telas de gestão e navegação do prestador | React | `pi4-0102-g3-frontend` | Samuel Henrique do Nascimento Pereira /  João Victor Pensado |
+| **Frontend** | Telas de gestão e navegação do prestador | React ou HTML&CSS | `pi4-0102-g3-frontend` | Samuel Henrique do Nascimento Pereira /  João Victor Pensado |
 | **Backend 1** | Gerencia clientes, endereços, serviços e agendamentos | Java | `pi4-0102-g3-backend-1` | Felipe Bianco Gaya dos Santos  / Thiago Viel Denadai|
 | **Backend 2** | Gerencia orçamentos, pagamentos e notificações | Java | `pi4-0102-g3-backend-2` | Felipe Bianco Gaya dos Santos  / Thiago Viel Denadai|
 | **Banco de Dados** | Armazena dados relacionais de clientes, serviços e ordens | PostgreSQL | Compartilhado c/ Backend 1 | Breno Masiesque / Vinícius Logatto Costa Sete |
@@ -16,9 +16,9 @@ flowchart TB
 
     subgraph servihub ["Sistema ServiHUB"]
         direction TB
-        frontend["Frontend<br/>React<br/>Painel de Gestão"]
-        backend1["Backend 1<br/>Java / Spring Boot<br/>Clientes, Serviços e Agenda"]
-        backend2["Backend 2<br/>Java / Spring Boot<br/>Orçamentos, Pagamentos e Avisos"]
+        frontend["Frontend<br/>React/ HTML&CSS <br/>Painel de Gestão"]
+        backend1["Backend 1<br/>Java<br/>Clientes, Serviços e Agenda"]
+        backend2["Backend 2<br/>Java<br/>Orçamentos, Pagamentos e Avisos"]
         banco[("Banco de Dados<br/>PostgreSQL<br/>Repositório Relacional")]
     end
 
