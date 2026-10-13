@@ -12,13 +12,16 @@ Nas mensagens e requisições entre módulos usamos camelCase (ex: `clienteId`, 
 ## Diagrama de Contêineres (C4 - Nível 2)
 ```mermaid
 flowchart TB
-    prestador(["Prestador de Serviço"])
+    prestador(["Prestador<br/>de Serviços"])
 
     subgraph servihub ["Sistema ServiHUB"]
         direction TB
-        frontend["Frontend<br/>React/ HTML&CSS <br/>Painel de Gestão"]
-        backend1["Backend 1<br/>Java<br/>Clientes, Serviços e Agenda"]
-        backend2["Backend 2<br/>Java<br/>Orçamentos, Pagamentos e Avisos"]
+        frontend["Frontend<br/>React / HTML & CSS<br/>Painel de Gestão"]
+        
+        backend1["Backend 1<br/>Java<br/>Clientes, Endereços,<br/>Serviços e Agenda"]
+        
+        backend2["Backend 2<br/>Java<br/>Orçamentos, Pagamentos<br/>e Alertas/Lembretes"]
+        
         banco[("Banco de Dados<br/>PostgreSQL<br/>Repositório Relacional")]
     end
 
