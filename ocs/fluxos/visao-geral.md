@@ -12,7 +12,7 @@ Nas mensagens e requisições entre módulos usamos camelCase (ex: `clienteId`, 
 ## Diagrama de Contêineres (C4 - Nível 2)
 ```mermaid
 flowchart TB
-    prestador(["Prestador de Serviços"])
+    prestador(["Prestador de Serviço"])
 
     subgraph servihub ["Sistema ServiHUB"]
         direction TB
