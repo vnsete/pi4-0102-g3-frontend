@@ -15,14 +15,15 @@ flowchart TB
     prestador(["Prestador de Serviços"])
 
     subgraph servihub ["Sistema ServiHUB"]
-        frontend["Frontend<br/>React<br/>Painel de gestão do prestador"]
-        backend1["Backend 1<br/>Java<br/>Clientes, serviços e agenda"]
-        backend2["Backend 2<br/>Java<br/>Orçamentos e pagamentos"]
-        banco[("Banco<br/>PostgreSQL<br/>Dados do sistema")]
+        direction TB
+        frontend["Frontend<br/>React<br/>Painel de Gestão"]
+        backend1["Backend 1<br/>Java / Spring Boot<br/>Clientes, Serviços e Agenda"]
+        backend2["Backend 2<br/>Java / Spring Boot<br/>Orçamentos, Pagamentos e Avisos"]
+        banco[("Banco de Dados<br/>PostgreSQL<br/>Repositório Relacional")]
     end
 
-    prestador -->|usa| frontend
-    frontend -->|operações, HTTP| backend1
-    frontend -->|orçamentos e pagamentos, HTTP| backend2
-    backend1 -->|lê e grava, SQL| banco
-    backend2 -.->|alertas e lembretes| frontend
+    prestador -->|Usa via navegador| frontend
+    frontend -->|Requisições HTTP<br/>(Clientes, Serviços, Agenda)| backend1
+    frontend -->|Requisições HTTP<br/>(Orçamentos, Pagamentos)| backend2
+    backend1 -->|Persistência SQL<br/>(Leitura e Gravação)| banco
+    backend2 -.->|Notificações e Lembretes<br/>(Avisos de pendências)| frontend
