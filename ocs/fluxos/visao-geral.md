@@ -23,7 +23,7 @@ flowchart TB
     end
 
     prestador -->|Usa via navegador| frontend
-    frontend -->|Requisições HTTP<br/>(Clientes, Serviços, Agenda)| backend1
-    frontend -->|Requisições HTTP<br/>(Orçamentos, Pagamentos)| backend2
-    backend1 -->|Persistência SQL<br/>(Leitura e Gravação)| banco
-    backend2 -.->|Notificações e Lembretes<br/>(Avisos de pendências)| frontend
+    frontend -->|Requisições HTTP<br/>Clientes, Serviços, Agenda| backend1
+    frontend -->|Requisições HTTP<br/>Orçamentos e Pagamentos| backend2
+    backend1 -->|Persistência SQL<br/>Leitura e Gravação| banco
+    backend2 -.->|Notificações e Lembretes<br/>Avisos de pendências| frontend
