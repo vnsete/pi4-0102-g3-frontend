@@ -49,14 +49,59 @@ function options(rows, field = 'nome') {
     .map((r) => `<option value="${r.id}">${esc(r[field] || r.descricao || r.id)}</option>`)
     .join('');
 }
+
 function table(rows) {
   if (!rows.length) return '<p>Nenhum registro encontrado.</p>';
+
+  const labels = {
+    id: 'Código',
+    cliente_id: 'Cliente',
+    servico_id: 'Serviço',
+    endereco_id: 'Endereço',
+    orcamento_id: 'Orçamento',
+    nome: 'Nome',
+    cliente: 'Cliente',
+    descricao: 'Descrição',
+    telefone: 'Telefone',
+    email: 'E-mail',
+    logradouro: 'Rua / Avenida',
+    numero: 'Número',
+    complemento: 'Complemento',
+    bairro: 'Bairro',
+    cidade: 'Cidade',
+    estado: 'Estado',
+    cep: 'CEP',
+    status: 'Situação',
+    situacao: 'Situação',
+    valor: 'Valor',
+    valor_total: 'Valor total',
+    valor_previsto: 'Valor previsto',
+    data_pagamento: 'Data do pagamento',
+    data_atendimento: 'Data do atendimento',
+    inicio: 'Início',
+    fim: 'Término'
+  };
+
   const keys = Object.keys(rows[0]);
-  return `<table><thead><tr>${keys.map((k) => `<th>${esc(k)}</th>`).join('')}</tr></thead><tbody>${rows.map((r) => `<tr>${keys.map((k) => `<td>${esc(r[k])}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
+
+  const label = (key) =>
+    labels[key] ||
+    key.replaceAll('_', ' ').replace(/^./, (c) => c.toUpperCase());
+
+  return `<table>
+    <thead>
+      <tr>${keys.map((k) => `<th>${esc(label(k))}</th>`).join('')}</tr>
+    </thead>
+    <tbody>
+      ${rows.map((r) => `
+        <tr>
+          ${keys.map((k) => `<td>${esc(r[k])}</td>`).join('')}
+        </tr>
+      `).join('')}
+    </tbody>
+  </table>`;
 }
-function form(id, fields, button) {
-  return `<form class="box" id="${id}"><div class="formgrid">${fields.map(([name, label, type, opts]) => `<label>${label}${type === 'select' ? `<select name="${name}" required>${opts}</select>` : `<input name="${name}" type="${type || 'text'}" ${['email', 'complemento', 'numero', 'bairro', 'cidade', 'estado', 'cep', 'endereco_id', 'servico_id', 'data_pagamento', 'valor_previsto', 'data_atendimento'].includes(name) ? '' : 'required'}>`}</label>`).join('')}<button>${button}</button></div></form>`;
-}
+
 
 // Depois de salvar, a tela é recarregada para mostrar os dados atualizados.
 function bind(id, path, method = 'POST') {
